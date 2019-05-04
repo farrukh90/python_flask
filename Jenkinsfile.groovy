@@ -22,6 +22,7 @@ node{
         catch(err){
             sh "echo did not copy"
         }
+    }
     stage("Install requiremennts"){
         sh "ssh ec2-user@${ENV} sudo pip install -r /flaskex/requirements.txt"
     }
