@@ -8,6 +8,7 @@ node{
     }
     stage("Copy filese over"){
         sh "scp -r * ec2-user@${ENV}:/tmp"
+        sh "ssh ec2-user@${ENV}  pip install -r /tmp/requirements.txt"
     }
     stage("Create Folder"){        
         sh "ssh ec2-user@${ENV} sudo mkdir -p /flaskex"
@@ -35,9 +36,9 @@ node{
             sh "echo did not copy"
         }
     }
-    stage("Install requiremennts"){
-        sh "ssh ec2-user@${ENV}  pip install -r /flaskex/requirements.txt"
-    }
+    //stage("Install requiremennts"){
+    //    sh "ssh ec2-user@${ENV}  pip install -r /flaskex/requirements.txt"
+    //}
     stage("App Run"){
         sh "ssh ec2-user@${ENV}  systemctl start flaskex"
     }
