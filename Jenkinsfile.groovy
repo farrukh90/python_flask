@@ -36,7 +36,7 @@ node{
         }
     }
     stage("Install requiremennts"){
-        sh "ssh ec2-user@${ENV} sudo pip install -r /flaskex/requirements.txt"
+        sh "ssh ec2-user@${ENV}  pip install -r /flaskex/requirements.txt"
     }
     stage("App Run"){
         sh "ssh ec2-user@${ENV}  systemctl start flaskex"
